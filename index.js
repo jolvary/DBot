@@ -106,4 +106,4 @@ bot.on('ready',  () => {
 
 });
 
-bot.login('NjEyNjE3MTYxNjUwOTk1MjAw.XZtMcw.jlBUXd1IW7Y83UtTywsSDi0vdJY');
+bot.login(process.env.token);
