@@ -1,12 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('Hello World!');
-  res.end();
-}).listen(8080);
+const port = process.env.PORT || 3000;
 
 const prefix = '~';
 
