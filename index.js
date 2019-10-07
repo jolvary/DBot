@@ -38,23 +38,6 @@ bot.on('message', message => {
 				});
 		}
 	}
-
-	if (msg === prefix + 'BDO') {
-		
-		if (!message.sender === 239787910482755585) {
-				message.channel.send('Necesitas ser un oficial para usar este comando.');
-				return;
-			}
-		if (message.channel.type == 'text') {
-			message.channel.fetchMessages()
-				.then(messages => {
-					message.channel.bulkDelete(messages);
-					messagesDeleted = messages.array().length;
-				
-				console.log('Se han borrado todos los mensajes posibles. Total de mensajes borrados: ' + messagesDeleted);
-				});
-		}
-	}
 	
 	if (message.content.includes('30 minutos')) {
 		message.delete (900100)
