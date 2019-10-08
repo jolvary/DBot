@@ -63,7 +63,7 @@ bot.on('message', message => {
 				
 				console.log('Se han borrado todos los mensajes posibles. Total de mensajes borrados: ' + messagesDeleted);
 				});
-		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando help')
+		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando vaciar')
 		}
 	}
 	
@@ -90,7 +90,7 @@ bot.on('message', message => {
 
 			message.delete();
 
-			if (!message.member.roles.find(x => x.name === "Oficiales")) {
+			if (!message.member.roles.find(x => x.name === "Miembros")) {
 				message.channel.send('Necesitas ser un oficial para utilizar este comando.');
 				return;
 			}
