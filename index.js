@@ -4,6 +4,26 @@ const bot = new Discord.Client();
 var express = require('express');
 var app = express();
 var path = require('path');
+var http = require('http');
+
+function startKeepAlive() {
+	setInterval(function() {
+		var options = {
+			host: 'potatodbot.herokuapp.com',
+			port: 80,
+			path: '/'
+		};
+		http.get(options, function(res) {
+			try {
+				console.log('Heroku response:  '  + chunk);
+			} catch (err) {
+				console.log(err.message);
+			}
+		});
+	}, 900000);
+}
+
+startKeepAlive();
 
 var server = app.listen(process.env.PORT || 5000, function () {
   var port = server.address().port;
