@@ -7,18 +7,22 @@ var path = require('path');
 var http = require('http');
 
 function startKeepAlive() {
-	setInterval(function() {
+	setInterval(function()  {
 		var options = {
 			host: 'potatodbot.herokuapp.com',
 			port: 80,
 			path: '/'
 		};
 		http.get(options, function(res) {
-			try {
-				console.log('Heroku response:  '  + chunk);
-			} catch (err) {
-				console.log(err.message);
-			}
+			res.on('data', function(chunk) {
+				try {
+					console.log('Heroku response: ' + chunk);
+				} catch (err) {
+					console.log(err.message);
+				}
+			});
+		}).on('error', function(err){
+			console.log('Error: ' + err.message);
 		});
 	}, 900000);
 }
