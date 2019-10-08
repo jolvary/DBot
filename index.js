@@ -22,7 +22,8 @@ bot.on('message', message => {
 	let chg = message.content.split('30');
 	
 	if (msg === prefix + 'HELP') {
-		message.channel.send('Los comandos actuales son: \n- vaciar :  Elimina hasta 50 mensajes del canal donde se ejecuta. \n- purge :  Elimina la cantidad de mensajes especificados (Hasta 10 mensajes). \nAdemás actualiza los avisos de los boses automáticamente.')
+		message.channel.send('Los comandos actuales son: \n- vaciar :  Elimina hasta 50 mensajes del canal donde se ejecuta. \n- purge :  Elimina la cantidad de mensajes especificados (Hasta 10 mensajes). \nAdemás actualiza los avisos de los boses automáticamente.');
+		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando help')
 	}
 
 	if (msg === prefix + 'VACIAR') {
@@ -39,6 +40,7 @@ bot.on('message', message => {
 				
 				console.log('Se han borrado todos los mensajes posibles. Total de mensajes borrados: ' + messagesDeleted);
 				});
+		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando help')
 		}
 	}
 	
@@ -86,7 +88,7 @@ bot.on('message', message => {
 		}
 
 		purge();
-
+		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando help')
 	}
 
 });
