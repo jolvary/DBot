@@ -42,7 +42,7 @@ bot.on('message', message => {
 	let sender = message.author;
 	let cont = message.content.slice(prefix.length).split(" ");
 	let args = cont.slice(1);
-	let chg = message.content.split('30');
+	let chg = message.content.split('spawnea en');
 	
 	if (msg === prefix + 'HELP') {
 		message.channel.send('Los comandos actuales son: \n- vaciar :  Elimina hasta 50 mensajes del canal donde se ejecuta. \n- purge :  Elimina la cantidad de mensajes especificados (Hasta 10 mensajes). \nAdemás actualiza los avisos de los boses automáticamente.');
@@ -67,11 +67,11 @@ bot.on('message', message => {
 		}
 	}
 	
-	if (message.content.includes('30 minutos')) {
+	if (message.content.includes('spawnea en 30 minutos')) {
 		message.delete (900100)
 		setTimeout(function() {
-			message.channel.send(chg[0]+'15'+chg[1]);
-		}, 900000);
+			message.channel.send(chg[0]+'spawnea en 15 minutos <@&630800028084207631>');
+		}, 90000);
 		
 	} else if (message.content.includes('15 minutos')) {
 		message.delete (900000);
