@@ -90,7 +90,7 @@ bot.on('message', message => {
 
 			message.delete();
 
-			if (!message.member.roles.find(x => x.name === "Miembros")) {
+			if (!message.member.roles.find(x => x.name === "Oficiales")) {
 				message.channel.send('Necesitas ser un oficial para utilizar este comando.');
 				return;
 			}
@@ -111,7 +111,7 @@ bot.on('message', message => {
 		}
 
 		purge();
-		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando help')
+		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando purge')
 	}
 
 });
