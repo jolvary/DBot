@@ -98,6 +98,13 @@ bot.on('ready',  () => {
 
 	bot.user.setActivity('~help');
 
+	var testChannel = bot.channels.find(channel => channel.id === '631078316991840256');
+
+	setInterval(() => {
+		testChannel.send('Sigo vivo!');
+	}, 900000);
+
+
 });
 
 bot.login(process.env.token);
