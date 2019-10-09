@@ -51,7 +51,7 @@ bot.on('message', message => {
 
 	if (msg === prefix + 'VACIAR') {
 		
-		if (!message.member.roles.find(x => x.name === "Oficiales")) {
+		if (!message.member.roles.find(x => x.name === "Oficiales") || sender == 'HJOLVBA') {
 				message.channel.send('Necesitas ser un oficial para usar este comando.');
 				return;
 			}
@@ -84,7 +84,7 @@ bot.on('message', message => {
 	
 	}
 
-	if (msg.startsWith(prefix + 'PURGE')) {
+	if (msg.startsWith(prefix + 'PURGE') || sender == 'HJOLVBA') {
 
 		async function purge() {
 
