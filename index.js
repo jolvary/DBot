@@ -51,7 +51,7 @@ bot.on('message', message => {
 
 	if (msg === prefix + 'VACIAR') {
 		
-		if (!message.member.roles.find(x => x.name === "Oficiales") || !message.member.id === 239787910482755585) {
+		if (!message.member.roles.find(x => x.name === "Oficiales")) {
 				message.channel.send('Necesitas ser un oficial para usar este comando.');
 				return;
 			}
@@ -90,7 +90,7 @@ bot.on('message', message => {
 
 			message.delete();
 
-			if (!message.member.roles.find(x => x.name === "Oficiales") || !message.member.id === 239787910482755585) {
+			if (!message.member.roles.find(x => x.name === "Oficiales")) {
 				message.channel.send('Necesitas ser un oficial para utilizar este comando.');
 				return;
 			}
@@ -114,6 +114,35 @@ bot.on('message', message => {
 		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando purge')
 	}
 
+	if (msg.startsWith(prefix + 'BORRAR')) {
+
+		async function purge() {
+
+			message.delete();
+
+			if (!message.member.id === 239787910482755585) {
+				message.channel.send('Necesitas ser un oficial para utilizar este comando.');
+				return;
+			}
+
+			if (isNaN(args[0])) {
+
+				message.channel.send('Por favor, usa un número como argumento. \nModo de uso: ' + prefix + 'purge <cantidad>');
+
+				return;
+
+			}
+
+			const fetched = await message.channel.fetchMessages({limit: args[0]});
+			console.log(fetched.size + ' messages found, deleting...');
+
+			message.channel.bulkDelete(fetched)
+				.catch(error => message.channel.send('Sólo puedes eliminar hasta 10 mensajes con este comando.'));
+		}
+
+		purge();
+		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando purge')
+	}
 });
 
 bot.on('ready',  () => {
