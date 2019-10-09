@@ -51,7 +51,7 @@ bot.on('message', message => {
 
 	if (msg === prefix + 'VACIAR') {
 		
-		if (!message.member.roles.find(x => x.name === "Oficiales") || !sender == 'HJOLVBA') {
+		if (!message.member.roles.find(x => x.name === "Oficiales") || !message.member.user.id === 239787910482755585) {
 				message.channel.send('Necesitas ser un oficial para usar este comando.');
 				return;
 			}
@@ -90,7 +90,7 @@ bot.on('message', message => {
 
 			message.delete();
 
-			if (!message.member.roles.find(x => x.name === "Oficiales") || !sender == 'HJOLVBA') {
+			if (!message.member.roles.find(x => x.name === "Oficiales") || !message.member.user.id === 239787910482755585) {
 				message.channel.send('Necesitas ser un oficial para utilizar este comando.');
 				return;
 			}
