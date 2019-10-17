@@ -34,7 +34,7 @@ var server = app.listen(process.env.PORT || 5000, function () {
   console.log("Express is working on port " + port);
 });
 
-const prefix = '~';
+const prefix = '--';
 
 bot.on('message', message => {
 
@@ -149,7 +149,7 @@ bot.on('ready',  () => {
 
 	console.log('Bot started.');
 
-	bot.user.setActivity('~help');
+	bot.user.setActivity('--help');
 
 	var testChannel = bot.channels.find(channel => channel.id === '631078316991840256');
 
