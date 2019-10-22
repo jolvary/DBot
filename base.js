@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 
 const bd = require('sqlite');
-bd.open("./anime.sqlite");
+bd.open("./animes.sqlite");
 
 bot.login('');
 
