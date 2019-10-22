@@ -46,7 +46,7 @@ const options = {
   },
   identity: {
     username: "meiachan",
-    password: "oauth:p509xbkpfld6u5e1sg7jscfb2dj154",
+    password: process.env.oauth,
   },
   channels: ['meiachan']
 };
