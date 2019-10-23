@@ -60,12 +60,19 @@ client.on('connected', (address, port) => {
 });
 
 client.on('chat', (channel, user, message, self) => {
+
+  let usuarios = []
+
   if (message == '!juego') {
     client.action('meiachan', 'Meiachan está jugando Black Desert Online.');
   }
 
   if (message.toUpperCase().startsWith('HOLA')) {
-  	client.action('meiachan', `Bienvenido ${user['display-name']}`);
+  	if (`${user['display-name']}` in usuarios){
+  		console.log('Quería un abruzo.'} else {
+  		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
+  		usuarios.push(`${user['display-name']}`);
+  	}
   }
 
 //  client.action('meiachan', `Bienvenido ${user['display-name']}`);
