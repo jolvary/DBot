@@ -69,7 +69,7 @@ client.on('chat', (channel, user, message, self) => {
 
   if (message.toUpperCase().startsWith('HOLA')) {
   	if (`${user['display-name']}` in usuarios){
-  		console.log('Queria un abruzo.'} else {
+  		console.log('Queria un abruzo.')} else {
   		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
   		usuarios.push(`${user['display-name']}`);
   	}
