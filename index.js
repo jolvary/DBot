@@ -59,9 +59,9 @@ client.on('connected', (address, port) => {
   client.action('Ho-la, estoy vivo!');
 });
 
-client.on('chat', (channel, user, message, self) => {
+ let usuarios = []
 
-  let usuarios = []
+client.on('chat', (channel, user, message, self) => {
 
   if (message == '!juego') {
     client.action('meiachan', 'Meiachan está jugando Black Desert Online.');
