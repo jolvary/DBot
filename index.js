@@ -72,6 +72,8 @@ client.on('chat', (channel, user, message, self) => {
   } else {
   	if (message.toUpperCase().includes('HOLA')) {
   		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
+  		usuarios.push(`${user['display-name']}`);
+  		console.log(usuarios);
   	}
   }
   	
