@@ -67,16 +67,16 @@ client.on('chat', (channel, user, message, self) => {
     client.action('meiachan', 'Meiachan está jugando Black Desert Online.');
   }
 
-  if (message.toUpperCase().startsWith('HOLA')) {
-  	if (`${user['display-name']}` in usuarios){
-  		console.log('Queria un abruzo.')} else {
+  if (usuarios.includes(`${user['display-name']}`)) {
+  	console.log('Queria un abruzo.'); 
+  } else {
+  	if (message.toUpperCase.includes('HOLA')) {
   		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
-  		usuarios.push(`${user['display-name']}`);
   	}
   }
+  	
 
-//  client.action('meiachan', `Bienvenido ${user['display-name']}`);
-})
+});
 
 const prefix = '--';
 
