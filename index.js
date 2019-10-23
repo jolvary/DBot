@@ -70,7 +70,7 @@ client.on('chat', (channel, user, message, self) => {
   if (usuarios.includes(`${user['display-name']}`)) {
   	console.log('Queria un abruzo.'); 
   } else {
-  	if (message.toUpperCase.includes('HOLA')) {
+  	if (message.toUpperCase().includes('HOLA')) {
   		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
   	}
   }
