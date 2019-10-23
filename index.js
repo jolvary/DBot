@@ -64,6 +64,10 @@ client.on('chat', (channel, user, message, self) => {
     client.action('meiachan', 'Meiachan está jugando Black Desert Online.');
   }
 
+  if (message.toUpperCase().contains('HOLA')) {
+  	client.action('meiachan', `Bienvenido ${user['display-name']}`);
+  }
+
 //  client.action('meiachan', `Bienvenido ${user['display-name']}`);
 })
 
