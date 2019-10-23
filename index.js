@@ -56,12 +56,12 @@ const client = new tmi.client(options);
 client.connect();
 
 client.on('connected', (address, port) => {
-  client.action('meiachan', 'Ho-la, estoy vivo!');
+  console.log('Ho-la, estoy vivo!');
 });
 
 client.on('chat', (channel, user, message, self) => {
   if (message == '!juego') {
-    client.action('meiachan', 'Meiachan está jugando al puto lol.')
+    client.action('meiachan', 'Meiachan está jugando Black Desert Online.')
   }
 
   client.action('meiachan', `Bienvenido ${user['display-name']}`);
