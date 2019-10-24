@@ -1,85 +1,7 @@
+// VARIABLES DE DISCORD
+
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-
-var express = require('express');
-var app = express();
-var path = require('path');
-var http = require('http');
-
-function startKeepAlive() {
-	setInterval(function()  {
-		var options = {
-			host: 'potatodbot.herokuapp.com',
-			port: 80,
-			path: '/'
-		};
-		http.get(options, function(res) {
-			res.on('data', function(chunk) {
-				try {
-					console.log('Heroku response: ' + chunk);
-				} catch (err) {
-					console.log(err.message);
-				}
-			});
-		}).on('error', function(err){
-			console.log('Error: ' + err.message);
-		});
-	}, 900000);
-}
-
-startKeepAlive();
-
-var server = app.listen(process.env.PORT || 5000, function () {
-  var port = server.address().port;
-  console.log("Express is working on port " + port);
-});
-
-const tmi = require("tmi.js");
-
-const options = {
-  options: {
-    debug: true,
-  },
-  connection: {
-    cluster: 'aws',
-    reconnect: true,
-  },
-  identity: {
-    username: "meiachan",
-    password: process.env.oauth,
-  },
-  channels: ['meiachan']
-};
-
-const client = new tmi.client(options);
-
-client.connect();
-
-client.on('connected', (address, port) => {
-  client.action('Ho-la, estoy vivo!');
-});
-
- let usuarios = []
-
-client.on('chat', (channel, user, message, self) => {
-
-  if (message == '!juego') {
-    client.action('meiachan', 'Meiachan está jugando Black Desert Online.');
-  }
-
-  if (usuarios.includes(`${user['display-name']}`)) {
-  	console.log('Queria un abruzo.'); 
-  } else {
-  	if (message.toUpperCase().includes('HOLA')) {
-  		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
-  		usuarios.push(`${user['display-name']}`);
-  		console.log(usuarios);
-  	}
-  }
-  	
-
-});
-
 const prefix = '--';
 
 bot.on('message', message => {
@@ -191,6 +113,95 @@ bot.on('message', message => {
 	}
 });
 
+// VARIABLES DE HEROKU
+
+var express = require('express');
+var app = express();
+var path = require('path');
+var http = require('http');
+
+function startKeepAlive() {
+	setInterval(function()  {
+		var options = {
+			host: 'potatodbot.herokuapp.com',
+			port: 80,
+			path: '/'
+		};
+		http.get(options, function(res) {
+			res.on('data', function(chunk) {
+				try {
+					console.log('Heroku response: ' + chunk);
+				} catch (err) {
+					console.log(err.message);
+				}
+			});
+		}).on('error', function(err){
+			console.log('Error: ' + err.message);
+		});
+	}, 900000);
+}
+
+startKeepAlive();
+
+var server = app.listen(process.env.PORT || 5000, function () {
+  var port = server.address().port;
+  console.log("Express is working on port " + port);
+});
+
+// VARIABLES TWITCH BOT
+
+const tmi = require("tmi.js");
+
+const options = {
+  options: {
+    debug: true,
+  },
+  connection: {
+    cluster: 'aws',
+    reconnect: true,
+  },
+  identity: {
+    username: "meiachan",
+    password: process.env.oauth,
+  },
+  channels: ['meiachan']
+};
+
+const client = new tmi.client(options);
+
+client.connect();
+
+client.on('connected', (address, port) => {
+  client.action('Ho-la, estoy vivo!');
+});
+
+ let usuarios = []
+
+client.on('chat', (channel, user, message, self) => {
+
+  if (message == '!juego') {
+    client.action('meiachan', 'Meiachan está jugando Black Desert Online.');
+  }
+
+  if (usuarios.includes(`${user['display-name']}`)) {
+  	console.log('Queria un abruzo.'); 
+  } else {
+  	if (message.toUpperCase().includes('HOLA')) {
+  		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
+  		usuarios.push(`${user['display-name']}`);
+  		console.log(usuarios);
+  	}
+  }
+
+  if (message == '!followers') {
+  	client.action('meiachan', ``)
+  }
+  	
+
+});
+
+
+
 bot.on('ready',  () => {
 
 	console.log('Bot started.');
@@ -202,7 +213,6 @@ bot.on('ready',  () => {
 	setInterval(() => {
 		testChannel.send('Sigo vivo!');
 	}, 900000);
-
 
 });
 
