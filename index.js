@@ -83,7 +83,7 @@ bot.on('message', message => {
 	}
 
 	if (msg.startsWith(prefix + 'PENE')) {
-		message.channel.send("A text to speech message from a bot.", {tts: true})
+		message.channel.send("Iba yo de peregrino y me cogiste de la mano.", {tts: true})
 	}
 
 	if (msg.startsWith(prefix + 'BORRAR')) {
