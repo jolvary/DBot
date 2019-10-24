@@ -82,6 +82,10 @@ bot.on('message', message => {
 		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando purge')
 	}
 
+	if (msg.startsWith(prefix + 'PENE')) {
+		message.channel.send("A text to speech message from a bot.", {tts: true})
+	}
+
 	if (msg.startsWith(prefix + 'BORRAR')) {
 
 		async function purge() {
