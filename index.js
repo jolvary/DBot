@@ -69,6 +69,10 @@ client.on('chat', (channel, user, message, self) => {
 
   if (usuarios.includes(`${user['display-name']}`)) {
   	console.log('Queria un abruzo.'); 
+  } else if (`${user['display-name']}` == 'Alpistenvena') {
+  	if (message.toUpperCase().includes('HOLA')) {
+  		client.action('meiachan', `Bienvenido Alpistenvena precioso`)
+  	}
   } else {
   	if (message.toUpperCase().includes('HOLA')) {
   		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
