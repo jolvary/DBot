@@ -130,7 +130,7 @@ bot.on('message', message => {
 		message.delete (86340000);
 	
 	} else if (message.content.includes('1 hora')) {
-		message.delete (900000);
+		message.delete (1800000);
 	
 	}
 
