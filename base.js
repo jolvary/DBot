@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 const bd = require('sqlite');
 bd.open("./animes.sqlite");
 
-bot.login('NjMzNjY1MDE5ODA4MDU1MzE2.XaYHpw.iipwwhrtzUNDLpzmJjU15h1MArU');
+bot.login('');
 
 bot.on('ready', () => {
 
