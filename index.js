@@ -56,16 +56,33 @@ const client = new tmi.client(options);
 client.connect();
 
 client.on('connected', (address, port) => {
-  client.action('meiachan', 'Ho-la, estoy vivo!');
+  client.action('Ho-la, estoy vivo!');
 });
 
+ let usuarios = []
+
 client.on('chat', (channel, user, message, self) => {
+
   if (message == '!juego') {
-    client.action('meiachan', 'Meiachan está jugando al puto lol.')
+    client.action('meiachan', 'Meiachan está jugando Black Desert Online.');
   }
 
-  client.action('meiachan', `Bienvenido ${user['display-name']}`);
-})
+  if (usuarios.includes(`${user['display-name']}`)) {
+  	console.log('Queria un abruzo.'); 
+  } else if (`${user['display-name']}` == 'Alpistenvena') {
+  	if (message.toUpperCase().includes('HOLA')) {
+  		client.action('meiachan', `Bienvenido Alpistenvena precioso`)
+  	}
+  } else {
+  	if (message.toUpperCase().includes('HOLA')) {
+  		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
+  		usuarios.push(`${user['display-name']}`);
+  		console.log(usuarios);
+  	}
+  }
+  	
+
+});
 
 const prefix = '--';
 
@@ -103,7 +120,7 @@ bot.on('message', message => {
 	if (message.content.includes('spawnea en 30 minutos')) {
 		message.delete (900100)
 		setTimeout(function() {
-			message.channel.send(chg[0]+'spawnea en 15 minutos <@&630800028084207631>');
+			message.channel.send(chg[0]+'spawnea en 15 minutos <@&630800028084207631>', {tts: true});
 		}, 900000);
 		
 	} else if (message.content.includes('15 minutos')) {
@@ -113,7 +130,7 @@ bot.on('message', message => {
 		message.delete (86340000);
 	
 	} else if (message.content.includes('1 hora')) {
-		message.delete (900000);
+		message.delete (1800000);
 	
 	}
 
@@ -145,6 +162,10 @@ bot.on('message', message => {
 
 		purge();
 		console.log('El usuario '+ message.member.user.tag + ' ha utilizado el comando purge')
+	}
+
+	if (msg.startsWith(prefix + 'PENE')) {
+		message.channel.send("Iba yo de peregrino y me cogiste de la mano.", {tts: true})
 	}
 
 	if (msg.startsWith(prefix + 'BORRAR')) {
