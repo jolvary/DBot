@@ -118,13 +118,13 @@ bot.on('message', message => {
 	}
 	
 	if (message.content.includes('spawnea en 30 minutos')) {
-		message.delete (900100)
+		message.delete (14900)
 		setTimeout(function() {
 			message.channel.send(chg[0]+'spawnea en 15 minutos <@&630800028084207631>', {tts: true});
-		}, 900000);
+		}, 15000);
 		
-	} else if (message.content.includes('15 minutos')) {
-		message.delete (900000);
+	} else if (message.content.includes('SOIS TODOS UNOS PUTOS RETRASADOS <3 (Bienvenido Alpi, tu eres un grande te quiero joder).')) {
+		message.delete ();
 		
 	} else if (message.content.includes('00:15')) {
 		message.delete (86340000);
