@@ -120,7 +120,7 @@ bot.on('message', message => {
 	if (message.content.includes('spawnea en 30 minutos')) {
 		message.delete (900100)
 		setTimeout(function() {
-			message.channel.send(chg[0]+'spawnea en 15 minutos <@&630800028084207631>', {tts: true});
+			message.channel.send(chg[0]+'spawnea en 15 minutos <@&610956094042538016>', {tts: true});
 		}, 900000);
 		
 	} else if (message.content.includes('15 minutos')) {
