@@ -124,7 +124,7 @@ bot.on('message', message => {
 		}, 900000);
 		
 	} else if (message.content.includes('GRAN DECISION RAEDAN ERES UN PUTO GENIO <3 (Bienvenido Alpi, tu eres un grande te quiero joder).')) {
-		message.delete ();
+		message.delete (15000);
 		
 	} else if (message.content.includes('00:15')) {
 		message.delete (86340000);
