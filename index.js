@@ -123,6 +123,9 @@ bot.on('message', message => {
 			message.channel.send(chg[0]+'spawnea en 15 minutos <@&630800028084207631>', {tts: true});
 		}, 900000);
 		
+	} else if (message.content.includes('15 minutos')) {
+		message.delete (900000); 
+		
 	} else if (message.content.includes('GRAN DECISION RAEDAN ERES UN PUTO GENIO <3 (Bienvenido Alpi, tu eres un grande te quiero joder).')) {
 		message.delete (15000);
 		
