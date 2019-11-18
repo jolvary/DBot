@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const bot = new Discord.Client();
+const client = new Discord.Client();
 
 var express = require('express');
 var app = express();
@@ -9,7 +9,7 @@ var http = require('http');
 function startKeepAlive() {
 	setInterval(function()  {
 		var options = {
-			host: 'potatodbot.herokuapp.com',
+			host: 'potatodclient.herokuapp.com',
 			port: 80,
 			path: '/'
 		};
@@ -86,7 +86,7 @@ client.on('chat', (channel, user, message, self) => {
 
 const prefix = '--';
 
-bot.on('message', message => {
+client.on('message', message => {
 
 	let msg = message.content.toUpperCase();
 	let sender = message.author;
@@ -101,10 +101,6 @@ bot.on('message', message => {
 
 	if (msg === prefix + 'VACIAR') {
 		
-		if (!message.member.roles.find(x => x.name === "Oficiales")) {
-				message.channel.send('Necesitas ser un oficial para usar este comando.');
-				return;
-			}
 		if (message.channel.type == 'text') {
 			message.channel.fetchMessages()
 				.then(messages => {
@@ -143,11 +139,6 @@ bot.on('message', message => {
 
 			message.delete();
 
-			if (!message.member.roles.find(x => x.name === "Oficiales")) {
-				message.channel.send('Necesitas ser un oficial para utilizar este comando.');
-				return;
-			}
-
 			if (isNaN(args[0])) {
 
 				message.channel.send('Por favor, usa un número como argumento. \nModo de uso: ' + prefix + 'purge <cantidad>');
@@ -177,11 +168,6 @@ bot.on('message', message => {
 
 			message.delete();
 
-			if (!message.member.id === 239787910482755585) {
-				message.channel.send('Necesitas ser un oficial para utilizar este comando.');
-				return;
-			}
-
 			if (isNaN(args[0])) {
 
 				message.channel.send('Por favor, usa un número como argumento. \nModo de uso: ' + prefix + 'purge <cantidad>');
@@ -202,13 +188,13 @@ bot.on('message', message => {
 	}
 });
 
-bot.on('ready',  () => {
+client.on('ready',  () => {
 
-	console.log('Bot started.');
+	console.log('client started.');
 
-	bot.user.setActivity('--help');
+	client.user.setActivity('--help');
 
-	var testChannel = bot.channels.find(channel => channel.id === '631078316991840256');
+	var testChannel = client.channels.find(channel => channel.id === '631078316991840256');
 
 	setInterval(() => {
 		testChannel.send('Sigo vivo!');
@@ -217,4 +203,28 @@ bot.on('ready',  () => {
 
 });
 
-bot.login(process.env.token);
+client.on('guildCreate', guild => {
+	const clientStats = {
+		totalGuildsID: '645907457285029898',
+		totalUsersID: '645907404151586826',
+		totalChannelsID: '645907536893181982'
+	}
+	
+	client.channels.get(clientStats.totalGuildsID).setName(`Total Guilds : ${client.guilds.size}`);
+	client.channels.get(clientStats.totalUsersID).setName(`Total Users : ${client.guilds.reduce((a, g) => a + g.memberCount, 0)}`);
+	client.channels.get(clientStats.totalChannelsID).setName(`Total Channels : ${client.channels.size}`);
+});
+
+client.on('guildDelete', guild => {
+	const clientStats = {
+		totalGuildsID: '645907457285029898',
+		totalUsersID: '645907404151586826',
+		totalChannelsID: '645907536893181982'
+	}
+
+	client.channels.get(clientStats.totalGuildsID).setName(`Total Guilds : ${client.guilds.size}`);
+	client.channels.get(clientStats.totalUsersID).setName(`Total Users : ${client.guilds.reduce((a, g) => a + g.memberCount, 0)}`);
+	client.channels.get(clientStats.totalChannelsID).setName(`Total Channels : ${client.channels.size}`);
+});
+
+client.login(process.env.token);
