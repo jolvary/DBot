@@ -51,31 +51,31 @@ const options = {
   channels: ['meiachan']
 };
 
-const client = new tmi.client(options);
+const twitch = new tmi.client(options);
 
-client.connect();
+twitch.connect();
 
-client.on('connected', (address, port) => {
-  client.action('Ho-la, estoy vivo!');
+twitch.on('connected', (address, port) => {
+  twitch.action('Ho-la, estoy vivo!');
 });
 
  let usuarios = []
 
-client.on('chat', (channel, user, message, self) => {
+twitch.on('chat', (channel, user, message, self) => {
 
   if (message == '!juego') {
-    client.action('meiachan', 'Meiachan está jugando Black Desert Online.');
+    twitch.action('meiachan', 'Meiachan está jugando Black Desert Online.');
   }
 
   if (usuarios.includes(`${user['display-name']}`)) {
   	console.log('Queria un abruzo.'); 
   } else if (`${user['display-name']}` == 'Alpistenvena') {
   	if (message.toUpperCase().includes('HOLA')) {
-  		client.action('meiachan', `Bienvenido Alpistenvena precioso`)
+  		twitch.action('meiachan', `Bienvenido Alpistenvena precioso`)
   	}
   } else {
   	if (message.toUpperCase().includes('HOLA')) {
-  		client.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
+  		twitch.action('meiachan', `Bienvenido al directo ${user['display-name']}`)
   		usuarios.push(`${user['display-name']}`);
   		console.log(usuarios);
   	}
